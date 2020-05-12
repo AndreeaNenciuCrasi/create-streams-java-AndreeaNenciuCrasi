@@ -1,6 +1,7 @@
 package com.codecool;
 
 import java.util.Arrays;
+import java.util.function.IntSupplier;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -85,9 +86,13 @@ public class Streams {
          * HINT: You will need to create a new class for this.
          */
 
-        Supplier<Stream<Integer>> fibSupp = () -> new Fibonacci().getFibonacciSeries();
+//        Fibonacci fib = new Fibonacci();
+//        IntSupplier fibSupp = fib::next;
 
-        Stream<Integer> s6 = fibSupp.get().limit(10);
-        s6.forEach(System.out::println);
+
+        IntStream s6 = IntStream.generate(new Fibonacci());
+        s6.limit(10).forEach(System.out::println);
+
+
     }
 }
